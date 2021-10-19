@@ -1,13 +1,15 @@
 from core.config import config
 from .screens.debug import layout as debug
 from .screens.home import layout as home
-from .screens.password import layout as password
+from .screens.password import layout as __password
+from .screens.config import layout as confi
 from .utils import sg
 
 layout = [[
     debug,
     home,
-    password
+    __password,
+    confi
 ]]
 
 window = sg.Window(
@@ -17,11 +19,11 @@ window = sg.Window(
     grab_anywhere=True,
     # location=(0, 0),
     # margins=(2, 2),
-    # no_titlebar=True,
+    no_titlebar=True,
     size=(320, 480)
 )
 
-screens = ['-DEBUG SCREEN-', '-HOME SCREEN-', '-PASSWORD SCREEN-']
+screens = ['-DEBUG SCREEN-', '-HOME SCREEN-', '-PASSWORD SCREEN-', '-CONFIG SCREEN-']
 
 
 def go2(route):

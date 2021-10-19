@@ -6,9 +6,10 @@ __file_name__ = 'data.pickle'
 
 @dataclass
 class Config:
-    debug: bool = False
+    debug: bool = True
     engine: str = 'tensors'
-    server: str = 'http://localhost:5000/reconhecer'
+    server: str = 'http://localhost:5000/reconhecer',
+    password: str = '1234'
 
     def __iter__(self):
         return iter(astuple(self))

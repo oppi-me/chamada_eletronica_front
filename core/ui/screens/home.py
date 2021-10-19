@@ -1,9 +1,7 @@
-from core.ui.utils import FONT_FAMILY, DETECTION_STATUS_IDLE, IMAGE_BLANK_PROFILE
+from core.ui.utils import FONT_FAMILY, IMAGE_BLANK_PROFILE
 from core.ui.utils import sg
 
 __title = [[sg.Text('Chamada Eletrônica', font=f'{FONT_FAMILY} 16 bold')]]
-
-__video_capture = [[sg.Image(IMAGE_BLANK_PROFILE, size=(250, 250), pad=(5, 5), key='-VIDEO CAPTURE-')]]
 
 __information = [
     [sg.Text('Aluno: ', size=(7,)), sg.Text('', size=(999,), key='-STUDENT NAME-')],
@@ -14,7 +12,7 @@ __information = [
 layout = sg.Column(
     [
         [sg.Frame('', __title, expand_x=True, element_justification='center')],
-        [sg.Column(__video_capture, background_color=DETECTION_STATUS_IDLE, key='-DETECTION STATUS-')],
+        [sg.Image(IMAGE_BLANK_PROFILE, size=(250, 250), key='-VIDEO CAPTURE-')],
         [sg.Frame('Informações', __information, expand_x=True, expand_y=True)],
         [sg.Button('Menu', size=(999, 48), expand_x=True, key='-ROUTE-', metadata='-PASSWORD SCREEN-')]
     ], element_justification='center', expand_y=True, expand_x=True, visible=False, key='-HOME SCREEN-'

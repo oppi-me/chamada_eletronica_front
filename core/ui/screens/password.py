@@ -6,7 +6,7 @@ def __button(placeholder: str): return sg.Button(
     font=f'{FONT_FAMILY} 14',
     expand_x=True,
     key=f'-PASSWORD DIGIT {placeholder}-',
-    metadata=int(placeholder)
+    metadata=placeholder
 )
 
 
@@ -30,7 +30,8 @@ layout = sg.Column(
         [
             sg.Button('Cancelar', expand_x=True, font=f'{FONT_FAMILY} 16 bold',
                       key='-ROUTE-', metadata='-HOME SCREEN-'),
-            sg.Button('Confirmar', expand_x=True, font=f'{FONT_FAMILY} 16 bold')
+            sg.Button('Confirmar', expand_x=True, font=f'{FONT_FAMILY} 16 bold',
+                      key='-ROUTE-', metadata='-CONFIG SCREEN-')
         ]
     ],
     element_justification='center', expand_x=True, visible=False,
