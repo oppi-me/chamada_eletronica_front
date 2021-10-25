@@ -41,6 +41,9 @@ def go2(route):
     for _screen in _screens:
         window[_screen].update(visible=False)
 
+    if route == '-HOME SCREEN-':
+        controller.detector.start()
+
     if controller.config.config.debug and route == '-HOME SCREEN-':
         window['-DEBUG SCREEN-'].update(visible=True)
 

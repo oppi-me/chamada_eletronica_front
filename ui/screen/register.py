@@ -9,8 +9,8 @@ layout = sg.Column(
         [sg.Frame('', __title, expand_x=True, element_justification='center')],
         [sg.Column(__video_capture)],
         [
-            sg.Button('Pular', expand_x=True, font=f'{FONT_FAMILY} 16 bold', key='-BUTTON SKIP-'),
-            sg.Button('Adicionar', expand_x=True, font=f'{FONT_FAMILY} 16 bold', key='-BUTTON ADD-')
+            sg.Button('Pular', expand_x=True, font=f'{FONT_FAMILY} 16 bold', disabled=True, key='-BUTTON SKIP-'),
+            sg.Button('Adicionar', expand_x=True, font=f'{FONT_FAMILY} 16 bold', disabled=True, key='-BUTTON ADD-')
         ],
         [sg.Button('Finalizar', expand_x=True, font=f'{FONT_FAMILY} 16 bold', key='-REGISTER COMPLETED-')]
     ], element_justification='center', expand_y=True, expand_x=True, visible=False, key='-REGISTER SCREEN-'

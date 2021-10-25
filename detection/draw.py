@@ -1,16 +1,13 @@
 from copy import copy
 
 import cv2
-import numpy as np
 
 
-def fps(image: np.ndarray, count: float):
-    text = f'FPS: {round(count, 2)}'
-
+def text(image, t, pos, color):
     cv2.putText(
         image,
-        text,
-        (10, 25),
+        t,
+        pos,
         cv2.FONT_HERSHEY_PLAIN,
         1.3,
         (0, 0, 0),
@@ -18,11 +15,11 @@ def fps(image: np.ndarray, count: float):
     )
     cv2.putText(
         image,
-        text,
-        (10, 25),
+        t,
+        pos,
         cv2.FONT_HERSHEY_PLAIN,
         1.3,
-        (0, 255, 255),
+        color,
         2
     )
 
@@ -34,7 +31,7 @@ def face(image, position, scale=None):
     rt = 1
     lt = 5
     length = 30
-    color = (255, 0, 255)
+    color = 255, 0, 255
 
     x, y, w, h = position[:4]
     width, height = x + w, y + h
@@ -52,6 +49,25 @@ def face(image, position, scale=None):
     # Bottom Right
     cv2.line(image, (width, height), (width - length, height), color, lt)
     cv2.line(image, (width, height), (width, height - length), color, lt)
+
+
+def center(image):
+    h, w = image.shape[:2]
+
+    color = (0, 0, 0)
+
+    cv2.line(image, (0, int(h / 2)), (w, int(h / 2)), color, 1)
+    cv2.line(image, (int(w / 2), 0), (int(w / 2), h), color, 1)
+
+    cv2.putText(
+        image,
+        'x',
+        (int(w / 2) - 5, int(h / 2) + 4),
+        cv2.FONT_HERSHEY_PLAIN,
+        1,
+        color,
+        1
+    )
 
 
 def probability(img, position, scale=None):

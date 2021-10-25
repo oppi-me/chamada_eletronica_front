@@ -3,7 +3,6 @@ import PySimpleGUI as sg
 import controller
 import ui
 
-controller.detector.start()
 ui.go2('-HOME SCREEN-')
 
 while True:
@@ -13,11 +12,10 @@ while True:
         break
 
     if 'ROUTE' in event:
-        controller.detector.stop()
+        controller.detector.release()
         route = ui.window.find_element(event).metadata
 
         if route == '-HOME SCREEN-':
-            controller.detector.start()
             controller.password.clean()
 
         if route == '-CONFIG SCREEN-':
@@ -34,22 +32,19 @@ while True:
 
     if event == '-SAVE CONFIG-':
         controller.config.save(values)
-        controller.detector.start()
         ui.go2('-HOME SCREEN-')
 
     if event == '-REGISTER COMPLETED-':
         values['-CHECK REGISTER-'] = False
         ui.window['-CHECK REGISTER-'].update(False)
-
         controller.config.save(values)
 
-        controller.detector.start()
         ui.go2('-HOME SCREEN-')
 
     if event == '-BUTTON ADD-':
         controller.detector.send_register()
 
     if event == '-BUTTON SKIP-':
-        controller.detector.start()
+        controller.detector.skip_register()
 
 controller.detector.release()

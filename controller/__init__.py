@@ -9,5 +9,5 @@ config.load()
 
 loading = LoadingController(window, config)
 
-detector = DetectorController(window, config, src=0)
+detector = DetectorController(window, config)
 password = PasswordController(window, config)

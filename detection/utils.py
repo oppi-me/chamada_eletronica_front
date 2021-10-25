@@ -112,3 +112,7 @@ def resize(image: np.ndarray, width=None, height=None, scale=None, interpolation
 def video_capture_dimensions(video_capture) -> tuple:
     # height x width
     return video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT), video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)
+
+
+def variance_of_laplacian(image):
+    return cv2.Laplacian(image, cv2.CV_64F).var()
