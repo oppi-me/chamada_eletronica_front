@@ -1,8 +1,6 @@
 import mediapipe as mp
 
-from core.config import config
-from core.decorators import execution_time
-from core.detection import utils
+from detection import utils
 
 
 class Tensors:
@@ -10,7 +8,6 @@ class Tensors:
         mp_face_detection = mp.solutions.face_detection
         self.face_detection = mp_face_detection.FaceDetection(0.75)
 
-    @execution_time(show=config.debug)
     def detect(self, image):
         rgb = utils.bgr2rgb(image)
 

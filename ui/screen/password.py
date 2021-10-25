@@ -1,4 +1,4 @@
-from core.ui.utils import sg, FONT_FAMILY
+from . import sg, FONT_FAMILY
 
 
 def __button(placeholder: str): return sg.Button(

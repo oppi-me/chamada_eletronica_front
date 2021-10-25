@@ -1,8 +1,6 @@
 import cv2
 
-from core.config import config
-from core.decorators import execution_time
-from core.detection import utils
+from detection import utils
 
 
 class CascadeClassifier:
@@ -12,7 +10,6 @@ class CascadeClassifier:
         self.options = {'scaleFactor': 1.10, 'minNeighbors': 5,
                         'minSize': (30, 30), 'flags': cv2.CASCADE_SCALE_IMAGE}
 
-    @execution_time(show=config.debug)
     def detect(self, image):
         image_gray = utils.bgr2gray(image)
 

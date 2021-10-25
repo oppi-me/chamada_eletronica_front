@@ -1,7 +1,6 @@
-from core.ui.utils import FONT_FAMILY, IMAGE_BLANK_PROFILE
-from core.ui.utils import sg
+from . import sg, FONT_FAMILY, IMAGE_BLANK_PROFILE
 
-__title = [[sg.Text('Chamada Eletrônica', font=f'{FONT_FAMILY} 16 bold')]]
+__title = [[sg.Text('Chamada Eletrônica', font=f'{FONT_FAMILY} 16 bold', key='-STATUS TEXT-')]]
 
 __information = [
     [sg.Text('Aluno: ', size=(7,)), sg.Text('', size=(999,), key='-STUDENT NAME-')],

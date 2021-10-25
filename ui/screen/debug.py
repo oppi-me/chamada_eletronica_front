@@ -1,5 +1,4 @@
-from core.ui.utils import FONT_FAMILY, IMAGE_BLANK_PROFILE
-from core.ui.utils import sg
+from . import sg, FONT_FAMILY, IMAGE_BLANK_PROFILE
 
 __title = [[sg.Text('DEBUG', font=f'{FONT_FAMILY} 16 bold')]]
 

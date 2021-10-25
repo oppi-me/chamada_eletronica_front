@@ -4,15 +4,26 @@ import cv2
 import numpy as np
 
 
-def fps(image: np.ndarray, count: int):
+def fps(image: np.ndarray, count: float):
+    text = f'FPS: {round(count, 2)}'
+
     cv2.putText(
         image,
-        f'FPS: {int(count)}',
-        (20, 40),
+        text,
+        (10, 25),
         cv2.FONT_HERSHEY_PLAIN,
-        2,
-        (255, 0, 0),
-        3
+        1.3,
+        (0, 0, 0),
+        6
+    )
+    cv2.putText(
+        image,
+        text,
+        (10, 25),
+        cv2.FONT_HERSHEY_PLAIN,
+        1.3,
+        (0, 255, 255),
+        2
     )
 
 

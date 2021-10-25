@@ -1,44 +1,55 @@
 import PySimpleGUI as sg
 
-from core import ui
-import core.controllers as controller
-from core.detection import Detector
-from core.ui import window
+import controller
+import ui
 
-detector = Detector(src=0).start()
-
-controller.config.init()
+controller.detector.start()
 ui.go2('-HOME SCREEN-')
+
 while True:
-    event, values = window.read()
+    event, values = ui.window.read()
 
     if event == '-EXIT-' or event == sg.WIN_CLOSED:
         break
 
     if 'ROUTE' in event:
-        route = window.find_element(event).metadata
+        controller.detector.stop()
+        route = ui.window.find_element(event).metadata
 
         if route == '-HOME SCREEN-':
-            detector.start()
+            controller.detector.start()
             controller.password.clean()
 
-        if route == '-PASSWORD SCREEN-':
-            detector.stop()
-
         if route == '-CONFIG SCREEN-':
-            if not controller.password.valid():
-                controller.password.clean()
+            is_valid = controller.password.valid()
+            controller.password.clean()
+
+            if not is_valid:
                 continue
 
         ui.go2(route)
 
     if 'PASSWORD DIGIT' in event:
-        controller.password.digit(window.find_element(event).metadata)
+        controller.password.digit(ui.window.find_element(event).metadata)
 
     if event == '-SAVE CONFIG-':
         controller.config.save(values)
-        controller.password.clean()
-        detector.start()
+        controller.detector.start()
         ui.go2('-HOME SCREEN-')
 
-detector.release()
+    if event == '-REGISTER COMPLETED-':
+        values['-CHECK REGISTER-'] = False
+        ui.window['-CHECK REGISTER-'].update(False)
+
+        controller.config.save(values)
+
+        controller.detector.start()
+        ui.go2('-HOME SCREEN-')
+
+    if event == '-BUTTON ADD-':
+        controller.detector.send_register()
+
+    if event == '-BUTTON SKIP-':
+        controller.detector.start()
+
+controller.detector.release()
