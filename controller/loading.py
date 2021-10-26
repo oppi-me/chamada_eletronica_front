@@ -9,11 +9,12 @@ class LoadingController:
             window.read(timeout=100)
 
             try:
-                payload = {
-                    'mac_address': config_controller.config.mac
+                headers = {
+                    'x-mac-address': config_controller.config.mac,
+                    'content-type': 'image/jpeg'
                 }
 
-                r = requests.post(config_controller.config.server + '/api/ping', data=payload)
+                r = requests.post(config_controller.config.server + '/api/ping', headers=headers)
                 if r.status_code > 202:
                     raise requests.exceptions.ConnectionError
 
