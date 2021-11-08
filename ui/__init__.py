@@ -32,7 +32,7 @@ window = sg.Window(
     grab_anywhere=True,
     # location=(0, 0),
     # margins=(2, 2),
-    # no_titlebar=True,
+    no_titlebar=True,
     size=(320, 480)
 )
 
